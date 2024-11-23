@@ -2,7 +2,7 @@
 // DB credentials.
 define('DB_HOST','localhost');
 define('DB_USER','root');
-define('DB_PASS','');
+define('DB_PASS','OtOjc7C7MwC5xxlkdyJE6BWzdQxVr9U7');
 define('DB_NAME','vrsdb');
 // Establish database connection.
 try
