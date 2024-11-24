@@ -1,16 +1,24 @@
-<?php 
-// DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','OtOjc7C7MwC5xxlkdyJE6BWzdQxVr9U7');
-define('DB_NAME','vrsdb');
-// Establish database connection.
-try
-{
-$dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-}
-catch (PDOException $e)
-{
-exit("Error: " . $e->getMessage());
+<?php
+// Render PostgreSQL connection credentials
+$host = 'dpg-ct0q233tq21c73ehkgr0-a';
+$port = '5432';
+$dbname = 'vrsdb';
+$user = 'vrsdb_user';
+$password = 'OtOjc7C7MwC5xxlkdyJE6BWzdQxVr9U7';
+
+try {
+    // DSN (Data Source Name) for PostgreSQL
+    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
+    
+    // Create a PDO instance
+    $pdo = new PDO($dsn, $user, $password, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Enable exceptions for errors
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Set default fetch mode
+    ]);
+    
+    echo "Database connected successfully!";
+} catch (PDOException $e) {
+    // Handle connection error
+    echo "Connection failed: " . $e->getMessage();
 }
 ?>
